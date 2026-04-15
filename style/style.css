@@ -1,0 +1,95 @@
+body { 
+    font-family: sans-serif; 
+    padding: 20px; 
+}
+       
+.caixa { 
+    max-width: 600px; 
+    margin: 0 auto; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+section {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+}
+.campo-grupo { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 20px; 
+    flex-wrap: wrap; 
+}
+label {
+    font-weight: bold;
+}
+input { 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    flex: 1; 
+    transition: all 0.3s ease; 
+    border: 1px solid #ccc;
+    outline: none; 
+}
+input:hover {
+    border-color: #999;
+}
+input:focus {
+    border-color: #2ecc71; 
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.2); 
+    background-color: #f9fffb; 
+}
+button { 
+    cursor: pointer; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    font-weight: bold; 
+}
+button:focus {
+    outline: 2px solid #2ecc71;
+    outline-offset: 2px;
+}
+.adicionar { 
+    color: black; 
+}
+.adicionar:hover {
+    border-color: #cbcbcb;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+.gerar { 
+    background: #10b981; 
+    color: white; 
+    width: 100%; 
+    margin-top: 20px; 
+}
+.gerar:hover {
+    background-color: #27ae60;
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+th { 
+    text-align: left; 
+    padding: 10px; 
+}
+td { 
+    padding: 10px; 
+    border-bottom: 1px solid #eee; 
+}
+
+#orcamento { 
+    display: none; 
+    margin-top: 20px; 
+    padding: 20px; 
+    border: 2px dashed #2e9acc; 
+}
+@media (max-width: 480px) {
+    .caixa {
+        width: 95%;
+    }
+}
