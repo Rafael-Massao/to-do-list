@@ -52,7 +52,7 @@ function atualizarTela() {
             <td>${t.horas}h</td>
             <td>R$ ${subtotal.toFixed(2)}</td>
             <td><button onclick="removerTarefa(${t.id})
-            "style="color:red">Apagar</button></td>
+            "style="color:white; background-color:red;">Apagar</button></td>
         </tr>`;
     });
 }
