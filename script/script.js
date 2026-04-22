@@ -63,6 +63,11 @@ function mostrarOrcamento() {
     const areaResumo = document.getElementById('conteudo-orcamento'); //Onde o resumo(Nota fiscal) aparece.
     const imposto = parseFloat(document.getElementById('imposto').value) || 0; //Valor do imposto(Decimal).
 
+    //Alerta para preços muito baixos
+    if (valorHora > 0 && valorHora <= 24) {
+        alert('⚠️ Alerta de Preços! \n \n HTML: R$ 25—45/h \n CSS: R$ 40—75/h \n JS: R$ 80—150/h');
+    }
+
     areaResumo.innerHTML = tarefas.map(t => { //Transforma cada tarefa em um parágrafo com o cálculo detalhado.
         const custo = t.horas * valorHora;
         return `<p>${t.nome}: ${t.horas}h x R$${valorHora} = <b>R$ ${custo.toFixed(2)}</b></p>`; //Retorna a parte do cálculo detalhado.
@@ -73,4 +78,5 @@ function mostrarOrcamento() {
 
     document.getElementById('total-final').innerText = `Total Geral (com ${imposto}% imposto): R$ ${totalFinal.toFixed(2)}`; //Atualiza o texto do Total Geral com o resultado final formatado.
     document.getElementById('orcamento').style.display = 'block'; //Faz o quadro de resumo(Que estava escondido) aparecer para o usuário.
+
 }
