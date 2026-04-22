@@ -88,6 +88,31 @@ td {
     padding: 20px; 
     border: 2px dashed #2e9acc; 
 }
+select {
+    background-color: #f1f1f1;
+    border: none;
+    color: black;
+    margin: 3%;
+    margin-left: 15%;
+    outline: none;
+    transition: 0.3s;
+    height: 40px;
+    cursor: pointer; 
+    padding: 10px;
+    border: none; 
+    border-radius: 4px; 
+    font-weight: bold; 
+}
+select:hover {
+    transition: all 0.3s ease;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    scale: 1.02;
+}
+.campo-urgencia {
+    margin-left: 10%;
+}
+
 @media (max-width: 480px) {
     .caixa {
         width: 95%;

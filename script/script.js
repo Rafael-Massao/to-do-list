@@ -23,7 +23,8 @@ function adicionarTarefa() {
 //limpa os campos para adicionarmos próximas tarefas
     campoNome.value = '';
     campoHoras.value = '';
-        
+
+
     atualizarTela(); //Função para mostrar a novidade na tabela(Atualiza a tela mostrando a nova tarefa)
 }
 
@@ -44,7 +45,8 @@ function atualizarTela() {
         corpoTabela.innerHTML = ''; //Apaga tudo o que está na tabela agora para não duplicar os itens.
 
     tarefas.forEach(t => { //Para cada tarefa (t) na lista:
-        const subtotal = t.horas * valorHora; //Calcula o subtotal.
+        //const urgencia = document.getElementById('urgencia').value;
+        const subtotal = t.horas * valorHora; //* urgencia; //Calcula o subtotal.
         corpoTabela.innerHTML += //Adiciona a tarefa na lista com "+="(Significa mantenha o que já existe e adicione ao final).
         //Cria uma linha de tabela(tr) com as células(td) na horizontal(Por ser apenas uma linha) seguido do botão de apagar. 
         `<tr>
@@ -62,6 +64,7 @@ function mostrarOrcamento() {
     const valorHora = parseFloat(document.getElementById('valorHora').value); //Valor da hora(Decimal).
     const areaResumo = document.getElementById('conteudo-orcamento'); //Onde o resumo(Nota fiscal) aparece.
     const imposto = parseFloat(document.getElementById('imposto').value) || 0; //Valor do imposto(Decimal).
+    //const urgencia = document.getElementById('urgencia').value;
 
     //Alerta para preços muito baixos
     if (valorHora > 0 && valorHora <= 24) {
@@ -74,9 +77,32 @@ function mostrarOrcamento() {
     }).join(''); //Junta tudo em um único blocão de texto para colocar na tela.
 
     const somaBruta = tarefas.reduce((acc, t) => acc + (t.horas * valorHora), 0); //O totalizador(.reduce) calcula o valor de cada tarefa da lista e joga dentro do acumulador(acc).
-    const totalFinal = somaBruta * (1 + imposto / 100); //Fórmula do imposto
+    const totalFinal = somaBruta * (1 + imposto / 100); // * urgencia; //Fórmula do imposto
 
     document.getElementById('total-final').innerText = `Total Geral (com ${imposto}% imposto): R$ ${totalFinal.toFixed(2)}`; //Atualiza o texto do Total Geral com o resultado final formatado.
     document.getElementById('orcamento').style.display = 'block'; //Faz o quadro de resumo(Que estava escondido) aparecer para o usuário.
 
+}
+
+function alterarUrgencia(){
+    const valorHora = parseFloat(document.getElementById('valorHora').value); //Valor da hora(Decimal).
+    const areaResumo = document.getElementById('conteudo-orcamento'); //Onde o resumo(Nota fiscal) aparece.
+    const imposto = parseFloat(document.getElementById('imposto').value) || 0; //Valor do imposto(Decimal).
+    const urgencia = document.getElementById('urgencia').value;
+
+    //Alerta para preços muito baixos
+    if (valorHora > 0 && valorHora <= 24) {
+        alert('⚠️ Alerta de Preços! \n \n HTML: R$ 25—45/h \n CSS: R$ 40—75/h \n JS: R$ 80—150/h');
+    }
+
+    areaResumo.innerHTML = tarefas.map(t => { //Transforma cada tarefa em um parágrafo com o cálculo detalhado.
+        const custo = t.horas * valorHora;
+        return `<p>${t.nome}: ${t.horas}h x R$${valorHora} = <b>R$ ${custo.toFixed(2)}</b></p>`; //Retorna a parte do cálculo detalhado.
+    }).join(''); //Junta tudo em um único blocão de texto para colocar na tela.
+
+    const somaBruta = tarefas.reduce((acc, t) => acc + (t.horas * valorHora), 0); //O totalizador(.reduce) calcula o valor de cada tarefa da lista e joga dentro do acumulador(acc).
+    const totalFinal = somaBruta * (1 + imposto / 100) * urgencia; //Fórmula do imposto
+
+    document.getElementById('total-final').innerText = `Total Geral (com ${imposto}% imposto): R$ ${totalFinal.toFixed(2)}`; //Atualiza o texto do Total Geral com o resultado final formatado.
+    document.getElementById('orcamento').style.display = 'block';   
 }
