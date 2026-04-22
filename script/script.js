@@ -46,7 +46,7 @@ function atualizarTela() {
 
     tarefas.forEach(t => { //Para cada tarefa (t) na lista:
         //const urgencia = document.getElementById('urgencia').value;
-        const subtotal = t.horas * valorHora; //* urgencia; //Calcula o subtotal.
+        const subtotal = t.horas * valorHora; //Calcula o subtotal.
         corpoTabela.innerHTML += //Adiciona a tarefa na lista com "+="(Significa mantenha o que já existe e adicione ao final).
         //Cria uma linha de tabela(tr) com as células(td) na horizontal(Por ser apenas uma linha) seguido do botão de apagar. 
         `<tr>
@@ -64,8 +64,7 @@ function mostrarOrcamento() {
     const valorHora = parseFloat(document.getElementById('valorHora').value); //Valor da hora(Decimal).
     const areaResumo = document.getElementById('conteudo-orcamento'); //Onde o resumo(Nota fiscal) aparece.
     const imposto = parseFloat(document.getElementById('imposto').value) || 0; //Valor do imposto(Decimal).
-    //const urgencia = document.getElementById('urgencia').value;
-
+    
     //Alerta para preços muito baixos
     if (valorHora > 0 && valorHora <= 24) {
         alert('⚠️ Alerta de Preços! \n \n HTML: R$ 25—45/h \n CSS: R$ 40—75/h \n JS: R$ 80—150/h');
